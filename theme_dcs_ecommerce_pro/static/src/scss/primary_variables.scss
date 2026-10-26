@@ -1,0 +1,102 @@
+// Copyright 2026 DevsCodeSpace. License OPL-1.
+// DCS Commerce Pro: presets (website values, fonts, palettes).
+
+// -------------------------------------------------------------------------- //
+// WEBSITE VALUES
+// -------------------------------------------------------------------------- //
+
+$o-website-values-palettes: (
+    (
+        'color-palettes-name': 'dcs-shelf',
+
+        'font': 'DM Sans',
+        'headings-font': 'Outfit',
+        'navbar-font': 'DM Sans',
+        'buttons-font': 'DM Sans',
+
+        'header-template': 'dcs-storefront',
+        'header-links-style': 'default',
+        'logo-height': 2.25rem,
+        'footer-template': 'dcs-storefront',
+        'footer-scrolltop': true,
+
+        // Buttons are pills, inputs are softly rounded: two shapes, two jobs.
+        'btn-padding-y': .625rem,
+        'btn-padding-x': 1.375rem,
+        'btn-padding-y-sm': .375rem,
+        'btn-padding-x-sm': .875rem,
+        'btn-padding-y-lg': .875rem,
+        'btn-padding-x-lg': 2rem,
+        'btn-border-radius': 10rem,
+        'btn-border-radius-sm': 10rem,
+        'btn-border-radius-lg': 10rem,
+        'input-padding-y': .625rem,
+        'input-border-radius': .5rem,
+        'input-border-radius-sm': .375rem,
+        'input-border-radius-lg': .625rem,
+    ),
+);
+
+// -------------------------------------------------------------------------- //
+// FONTS (bundled, see fonts.scss; no 'url' so nothing is requested from Google)
+// -------------------------------------------------------------------------- //
+
+$o-theme-font-configs: (
+    'DM Sans': (
+        'family': ('DM Sans', sans-serif),
+    ),
+    'Outfit': (
+        'family': ('Outfit', sans-serif),
+    ),
+    'Manrope': (
+        'family': ('Manrope', sans-serif),
+    ),
+);
+
+// -------------------------------------------------------------------------- //
+// COLOR PALETTES
+// 1 primary (actions) · 2 secondary (ink) · 3 light (image wells) · 4 white · 5 dark
+// menu / footer / copyright are color-combination indexes.
+// -------------------------------------------------------------------------- //
+
+$o-color-palettes: map-merge($o-color-palettes,
+    (
+        // Default: general retail, fashion, lifestyle.
+        'dcs-shelf': (
+            'o-color-1': #8A1C52,
+            'o-color-2': #1B2230,
+            'o-color-3': #EDEFF2,
+            'o-color-4': #FFFFFF,
+            'o-color-5': #161B26,
+            'menu': 1,
+            'footer': 2,
+            'copyright': 2,
+        ),
+        // Electronics, gadgets.
+        'dcs-harbor': (
+            'o-color-1': #0B63CE,
+            'o-color-2': #0F1A2B,
+            'o-color-3': #EAF1F8,
+            'o-color-4': #FFFFFF,
+            'o-color-5': #0C1422,
+            'menu': 1,
+            'footer': 2,
+            'copyright': 2,
+        ),
+        // Beauty, wellness, home.
+        'dcs-grove': (
+            'o-color-1': #2F6B5A,
+            'o-color-2': #2B2A33,
+            'o-color-3': #EEF2EE,
+            'o-color-4': #FFFFFF,
+            'o-color-5': #1E2420,
+            'menu': 1,
+            'footer': 2,
+            'copyright': 2,
+        ),
+    )
+);
+
+$o-selected-color-palettes-names: append($o-selected-color-palettes-names, 'dcs-shelf');
+$o-selected-color-palettes-names: append($o-selected-color-palettes-names, 'dcs-harbor');
+$o-selected-color-palettes-names: append($o-selected-color-palettes-names, 'dcs-grove');

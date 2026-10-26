@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026 DevsCodeSpace. License OPL-1. -->
+<odoo>
+
+    <asset id="theme_dcs_ecommerce_pro.primary_variables_scss" name="DCS Commerce Pro primary variables">
+        <field name="key">theme_dcs_ecommerce_pro.primary_variables_scss</field>
+        <bundle>web._assets_primary_variables</bundle>
+        <path>theme_dcs_ecommerce_pro/static/src/scss/primary_variables.scss</path>
+    </asset>
+
+    <asset id="theme_dcs_ecommerce_pro.bootstrap_overridden_scss" name="DCS Commerce Pro Bootstrap overrides">
+        <field name="key">theme_dcs_ecommerce_pro.bootstrap_overridden_scss</field>
+        <bundle directive="prepend">web._assets_frontend_helpers</bundle>
+        <path>theme_dcs_ecommerce_pro/static/src/scss/bootstrap_overridden.scss</path>
+    </asset>
+
+</odoo>

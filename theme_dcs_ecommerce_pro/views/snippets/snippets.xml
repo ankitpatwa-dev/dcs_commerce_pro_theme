@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026 DevsCodeSpace. License OPL-1. -->
+<odoo>
+
+    <!--
+        Block registration. This template is a theme view, so it is copied to
+        each website that selects the theme: the blocks only appear in the
+        editor of those websites.
+    -->
+    <template id="snippets" inherit_id="website.snippets" name="DCS Commerce Pro blocks">
+        <xpath expr="//t[@id='installed_snippets_hook']" position="before">
+            <t snippet-group="dcs_commerce" t-snippet="website.s_snippet_group" string="DCS Commerce"
+                t-thumbnail="/theme_dcs_ecommerce_pro/static/src/img/snippets_thumbs/dcs_group.svg"/>
+        </xpath>
+        <xpath expr="//snippets[@id='snippet_structure']" position="inside">
+            <t t-snippet="theme_dcs_ecommerce_pro.s_dcs_hero_shelf" string="Shelf Hero" group="dcs_commerce">
+                <keywords>hero, banner, storefront, intro, shop, new arrivals, dcs</keywords>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

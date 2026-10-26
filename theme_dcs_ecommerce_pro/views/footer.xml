@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026 DevsCodeSpace. License OPL-1. -->
+<odoo>
+
+    <!-- Footer picker entry (Website editor > Footer > Template) -->
+    <template id="template_footer_storefront_opt" inherit_id="website.snippet_options" name="DCS Storefront Footer - Option">
+        <xpath expr="//we-select[@data-variable='footer-template']" position="inside">
+            <we-button title="DCS Storefront"
+                data-customize-website-views="theme_dcs_ecommerce_pro.template_footer_storefront"
+                data-customize-website-variable="'dcs-storefront'"
+                data-img="/theme_dcs_ecommerce_pro/static/src/img/template_footer_storefront.svg"/>
+        </xpath>
+    </template>
+
+    <!--
+        Storefront footer: a service strip (what customers check before buying),
+        then shop / help / account links and the store's contact details.
+        Every link targets a route that exists with eCommerce installed.
+    -->
+    <template id="template_footer_storefront" inherit_id="website.layout" name="DCS Storefront Footer" active="False">
+        <xpath expr="//div[@id='footer']" position="replace">
+            <div id="footer" class="oe_structure oe_structure_solo o_dcs_footer" t-ignore="true" t-if="not no_footer">
+                <section class="s_text_block o_dcs_footer_service pt32 pb32" data-snippet="s_text_block" data-name="Service strip">
+                    <div class="container">
+                        <div class="row g-4">
+                            <div class="col-6 col-lg-3">
+                                <p class="o_dcs_service_title mb-1"><i class="fa fa-truck me-2" role="img" aria-hidden="true"/>Delivery</p>
+                                <p class="small mb-0">Ships within 2 working days.</p>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <p class="o_dcs_service_title mb-1"><i class="fa fa-undo me-2" role="img" aria-hidden="true"/>Returns</p>
+                                <p class="small mb-0">Send it back within 30 days.</p>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <p class="o_dcs_service_title mb-1"><i class="fa fa-lock me-2" role="img" aria-hidden="true"/>Payment</p>
+                                <p class="small mb-0">Checkout is encrypted end to end.</p>
+                            </div>
+                            <div class="col-6 col-lg-3">
+                                <p class="o_dcs_service_title mb-1"><i class="fa fa-comments-o me-2" role="img" aria-hidden="true"/>Help</p>
+                                <p class="small mb-0">We answer on working days.</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                <section class="s_text_block o_dcs_footer_links pt40 pb24" data-snippet="s_text_block" data-name="Links">
+                    <div class="container">
+                        <div class="row g-4">
+                            <div class="col-lg-4">
+                                <p class="o_dcs_footer_brand h5 mb-3">Your store</p>
+                                <p class="small mb-3">Tell visitors in one or two sentences what you sell and why it is worth buying from you.</p>
+                                <div class="s_social_media o_not_editable no_icon_color" data-snippet="s_social_media" data-name="Social Media">
+                                    <h5 class="s_social_media_title d-none">Follow us</h5>
+                                    <a href="/website/social/instagram" class="s_social_media_instagram me-2" target="_blank" aria-label="Instagram"><i class="fa fa-instagram fa-stack rounded-circle"/></a>
+                                    <a href="/website/social/facebook" class="s_social_media_facebook me-2" target="_blank" aria-label="Facebook"><i class="fa fa-facebook fa-stack rounded-circle"/></a>
+                                    <a href="/website/social/youtube" class="s_social_media_youtube me-2" target="_blank" aria-label="YouTube"><i class="fa fa-youtube-play fa-stack rounded-circle"/></a>
+                                </div>
+                            </div>
+                            <div class="col-6 col-lg-2 offset-lg-1">
+                                <p class="o_dcs_footer_heading">Shop</p>
+                                <ul class="list-unstyled small">
+                                    <li><a href="/shop">All products</a></li>
+                                    <li><a href="/shop/cart">Cart</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-6 col-lg-2">
+                                <p class="o_dcs_footer_heading">Your account</p>
+                                <ul class="list-unstyled small">
+                                    <li><a href="/my/orders">Orders</a></li>
+                                    <li><a href="/my/account">Details</a></li>
+                                </ul>
+                            </div>
+                            <div class="col-lg-3">
+                                <p class="o_dcs_footer_heading">Contact</p>
+                                <ul class="list-unstyled small">
+                                    <li><a href="/contactus">Contact form</a></li>
+                                    <li><a href="mailto:info@yourcompany.example.com">info@yourcompany.example.com</a></li>
+                                    <li><a href="tel:+15555555556">+1 555-555-5556</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </xpath>
+        <xpath expr="//div[hasclass('o_footer_copyright')]" position="attributes">
+            <attribute name="class" add="o_dcs_copyright" separator=" "/>
+        </xpath>
+    </template>
+
+</odoo>

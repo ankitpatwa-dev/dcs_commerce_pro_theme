@@ -1,0 +1,197 @@
+// Copyright 2026 DevsCodeSpace. License OPL-1.
+// DCS Commerce Pro: layout, header, footer and block styles.
+// Bundled only for websites using this theme (theme manifest asset).
+
+.o_dcs_ecom {
+    // ------------------------------------------------------------------ //
+    // Typography: tight geometric headings over a calm text face.
+    // ------------------------------------------------------------------ //
+    h1, .h1, h2, .h2, .display-1, .display-2, .display-3, .display-4 {
+        letter-spacing: -.02em;
+    }
+    h3, .h3, h4, .h4 {
+        letter-spacing: -.01em;
+    }
+    .lead {
+        max-width: 34em;
+    }
+    // Prices line up in lists and carts.
+    .oe_currency_value, .oe_price, .oe_default_price, .product_price {
+        font-variant-numeric: tabular-nums;
+    }
+
+    // ------------------------------------------------------------------ //
+    // Announcement bar
+    // ------------------------------------------------------------------ //
+    .o_dcs_announcement {
+        padding: .5rem 0;
+        font-size: .8125rem;
+        text-align: center;
+
+        p {
+            margin: 0;
+        }
+    }
+
+    // ------------------------------------------------------------------ //
+    // Storefront header (desktop)
+    // ------------------------------------------------------------------ //
+    .o_dcs_header {
+        flex-direction: column;
+        align-items: stretch;
+        border-bottom: 1px solid var(--dcs-hairline);
+    }
+    .o_dcs_header_bar {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 2rem;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+
+        .navbar-brand {
+            margin: 0;
+        }
+    }
+    .o_dcs_header_search {
+        max-width: 40rem;
+        width: 100%;
+        justify-self: center;
+
+        .o_dcs_search {
+            flex-wrap: nowrap;
+            background-color: var(--dcs-well);
+            border-radius: var(--dcs-radius-field);
+            transition: box-shadow .15s ease;
+
+            &:focus-within {
+                box-shadow: var(--dcs-focus);
+            }
+        }
+        .o_dcs_search_input {
+            height: 2.75rem;
+            padding-left: 1rem;
+            border: 0;
+            background: transparent !important;
+            box-shadow: none !important;
+            outline: none;
+        }
+        .o_dcs_search_submit {
+            border: 0;
+            background: transparent;
+            color: inherit;
+            padding: 0 1rem;
+        }
+        // Suggestions dropdown
+        .o_dropdown_menu {
+            border-radius: .625rem;
+            border-color: var(--dcs-hairline);
+            box-shadow: 0 .75rem 2rem -1rem rgba(o-color('o-color-2'), .35);
+        }
+    }
+    .o_dcs_header_menu {
+        border-top: 1px solid var(--dcs-hairline);
+
+        .o_dcs_menu {
+            gap: 1.75rem;
+
+            > .nav-item > .nav-link {
+                padding: .875rem 0;
+                font-weight: 500;
+                color: inherit;
+                box-shadow: inset 0 -2px 0 transparent;
+                transition: box-shadow .15s ease;
+
+                &:hover, &.active {
+                    box-shadow: inset 0 -2px 0 o-color('o-color-1');
+                }
+            }
+        }
+    }
+
+    // Call-to-action in the menu row: compact so the row keeps its height.
+    .o_dcs_header_menu .btn {
+        padding: .375rem 1rem;
+        font-size: .875rem;
+    }
+
+    // Mobile header: the cart button sits beside the menu toggle.
+    .o_header_mobile {
+        .o_main_nav {
+            flex-wrap: nowrap !important;
+        }
+        .navbar-brand {
+            min-width: 0;
+            max-width: 60%;
+            margin-right: auto;
+
+            img {
+                max-height: 2rem;
+                max-width: 100%;
+                width: auto;
+            }
+        }
+    }
+
+    // ------------------------------------------------------------------ //
+    // Storefront footer
+    // ------------------------------------------------------------------ //
+    .o_dcs_footer {
+        font-size: .9375rem;
+
+        a {
+            color: inherit;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+                text-underline-offset: .2em;
+            }
+        }
+        .o_dcs_footer_service {
+            border-bottom: 1px solid var(--dcs-hairline);
+        }
+        .o_dcs_service_title, .o_dcs_footer_heading {
+            font-weight: 600;
+        }
+        .o_dcs_footer_heading {
+            margin-bottom: .75rem;
+        }
+        .o_dcs_footer_brand {
+            font-family: $o-theme-headings-font;
+        }
+        .s_social_media a .fa {
+            border: 1px solid var(--dcs-hairline);
+        }
+        li + li {
+            margin-top: .375rem;
+        }
+    }
+    .o_dcs_copyright {
+        border-top: 1px solid var(--dcs-hairline);
+        font-size: .8125rem;
+    }
+
+    // ------------------------------------------------------------------ //
+    // Blocks
+    // ------------------------------------------------------------------ //
+    .s_dcs_hero_shelf {
+        .o_dcs_hero_title {
+            font-size: unquote('clamp(2.5rem, 5vw + 1rem, 4.5rem)');
+            font-weight: 600;
+            line-height: 1.02;
+            margin-bottom: 1.25rem;
+        }
+        .o_dcs_hero_lead {
+            margin-bottom: 2rem;
+        }
+        .o_dcs_hero_actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: .75rem;
+        }
+        .o_dcs_well {
+            aspect-ratio: 5 / 4;
+        }
+    }
+}

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026 DevsCodeSpace. License OPL-1. -->
+<odoo>
+
+    <!--
+        Guard class: storefront styles shipped by dcs_ecommerce_pro (a regular
+        module, loaded on every website) only apply under .o_dcs_ecom, which
+        exists only on websites using this theme.
+    -->
+    <template id="layout_guard" inherit_id="website.layout" name="DCS Commerce Pro guard class">
+        <xpath expr="//div[@id='wrapwrap']" position="attributes">
+            <attribute name="t-attf-class" add="o_dcs_ecom" separator=" "/>
+        </xpath>
+    </template>
+
+</odoo>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026 DevsCodeSpace. License OPL-1. -->
+<odoo>
+
+    <!-- Header picker entry (Website editor > Header > Template) -->
+    <template id="template_header_storefront_opt" inherit_id="website.snippet_options" name="DCS Storefront Header - Option">
+        <xpath expr="//we-select[@data-variable='header-template']" position="inside">
+            <we-button title="DCS Storefront"
+                data-customize-website-views="theme_dcs_ecommerce_pro.template_header_storefront"
+                data-customize-website-variable="'dcs-storefront'"
+                data-img="/theme_dcs_ecommerce_pro/static/src/img/template_header_storefront.svg"/>
+        </xpath>
+    </template>
+
+    <!--
+        Storefront header: announcement bar, then brand / product search /
+        account and cart, then the menu on its own row so long category menus
+        have room. Mobile uses Odoo's mobile header (cart included by eCommerce).
+    -->
+    <template id="template_header_storefront" inherit_id="website.layout" name="DCS Storefront Header" active="False">
+        <xpath expr="//header//nav" position="replace">
+            <div class="o_dcs_announcement o_cc o_cc3 s_text_block" data-name="Announcement bar">
+                <div class="container">
+                    <p class="mb-0">Free delivery on orders over 50. Free returns for 30 days.</p>
+                </div>
+            </div>
+            <t t-call="website.navbar">
+                <t t-set="_navbar_classes" t-valuef="d-none d-lg-block o_dcs_header p-0"/>
+                <div id="o_main_nav" class="o_main_nav container o_dcs_header_bar">
+                    <!-- Brand -->
+                    <t t-call="website.placeholder_header_brand">
+                        <t t-set="_link_class" t-valuef="o_dcs_brand"/>
+                    </t>
+                    <!-- Product search with live suggestions (image, price) -->
+                    <div class="o_dcs_header_search">
+                        <t t-nocache="The searchbox should not cache previous searches." t-call="website.website_search_box_input">
+                            <t t-set="search_type" t-valuef="products"/>
+                            <t t-set="action" t-valuef="/shop"/>
+                            <t t-set="limit" t-valuef="6"/>
+                            <t t-set="display_image" t-valuef="true"/>
+                            <t t-set="display_description" t-valuef="false"/>
+                            <t t-set="display_extra_link" t-valuef="true"/>
+                            <t t-set="display_detail" t-valuef="true"/>
+                            <t t-set="placeholder">Search products</t>
+                            <t t-set="_form_classes" t-valuef="w-100"/>
+                            <t t-set="_classes" t-valuef="o_dcs_search"/>
+                            <t t-set="_input_classes" t-valuef="o_dcs_search_input"/>
+                            <t t-set="_submit_classes" t-valuef="o_dcs_search_submit"/>
+                        </t>
+                    </div>
+                    <!-- Account, wishlist/compare (bridges), cart -->
+                    <ul class="navbar-nav o_dcs_header_actions">
+                        <t t-call="dcs_ecommerce_pro.header_actions"/>
+                    </ul>
+                </div>
+                <div class="o_dcs_header_menu">
+                    <div class="container d-flex align-items-center">
+                        <t t-call="website.navbar_nav">
+                            <t t-set="_nav_class" t-valuef="o_dcs_menu flex-grow-1"/>
+                            <t t-foreach="website.menu_id.child_id" t-as="submenu">
+                                <t t-call="website.submenu">
+                                    <t t-set="item_class" t-valuef="nav-item"/>
+                                    <t t-set="link_class" t-valuef="nav-link"/>
+                                </t>
+                            </t>
+                        </t>
+                        <ul class="navbar-nav flex-row align-items-center gap-1 flex-shrink-0">
+                            <t t-call="website.placeholder_header_language_selector">
+                                <t t-set="_btn_class" t-valuef="nav-link"/>
+                                <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+                            </t>
+                            <t t-call="website.placeholder_header_call_to_action"/>
+                        </ul>
+                    </div>
+                </div>
+            </t>
+            <t t-call="website.template_header_mobile"/>
+        </xpath>
+    </template>
+
+</odoo>
