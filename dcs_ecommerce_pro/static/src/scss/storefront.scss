@@ -1,0 +1,109 @@
+// Copyright 2026 DevsCodeSpace. License OPL-1.
+// Shared storefront components. Everything is scoped to .o_dcs_ecom, the class
+// the DCS Commerce Pro theme adds to #wrapwrap, so websites using another
+// theme are never restyled by this regular module.
+
+.o_dcs_ecom {
+    --dcs-ink: var(--o-color-2);
+    --dcs-well: var(--o-color-3);
+    --dcs-action: var(--o-color-1);
+    --dcs-hairline: color-mix(in srgb, var(--o-color-2) 12%, transparent);
+    --dcs-radius-well: .375rem;
+    --dcs-radius-field: .5rem;
+    --dcs-focus: 0 0 0 .1875rem color-mix(in srgb, var(--o-color-1) 35%, transparent);
+
+    // Visible keyboard focus everywhere in the storefront.
+    a, button, .btn, input, select, textarea, [tabindex] {
+        &:focus-visible {
+            outline: 2px solid var(--dcs-action);
+            outline-offset: 2px;
+            box-shadow: none;
+        }
+    }
+
+    // ------------------------------------------------------------------ //
+    // Image well: products stand on a tinted surface. multiply lets white
+    // studio backgrounds take the well colour instead of showing a box.
+    // ------------------------------------------------------------------ //
+    .o_dcs_well {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        aspect-ratio: 4 / 3;
+        padding: unquote('clamp(1rem, 4vw, 2.5rem)');
+        background-color: var(--dcs-well);
+        border-radius: var(--dcs-radius-well);
+        overflow: hidden;
+
+        > img, .o_dcs_well_img {
+            max-height: 100%;
+            width: auto;
+            object-fit: contain;
+            mix-blend-mode: multiply;
+        }
+    }
+
+    // ------------------------------------------------------------------ //
+    // Tag label: the shape of a swing tag (notched end with an eyelet).
+    // Used for hero labels now, product badges in later releases.
+    // ------------------------------------------------------------------ //
+    .o_dcs_tag {
+        --dcs-tag-bg: var(--dcs-action);
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        display: inline-flex;
+        align-items: center;
+        padding: .3125rem .75rem .3125rem 1.25rem;
+        font-size: .8125rem;
+        font-weight: 600;
+        line-height: 1.2;
+        color: #fff;
+        background:
+            radial-gradient(circle at .5625rem 50%, transparent .1875rem, var(--dcs-tag-bg) .21875rem);
+        clip-path: polygon(.5rem 0, 100% 0, 100% 100%, .5rem 100%, 0 50%);
+        border-radius: 0 .25rem .25rem 0;
+    }
+
+    // ------------------------------------------------------------------ //
+    // Header actions (account, wishlist, compare, cart)
+    // ------------------------------------------------------------------ //
+    .o_dcs_header_actions {
+        flex-direction: row;
+        align-items: center;
+        gap: .25rem;
+
+        .o_dcs_action_link {
+            display: inline-flex;
+            align-items: center;
+            gap: .375rem;
+            padding: .5rem .625rem;
+            border-radius: var(--dcs-radius-field);
+            color: inherit;
+            font-weight: 500;
+
+            &:hover {
+                background-color: var(--dcs-well);
+            }
+            .fa-stack {
+                width: 1.5em;
+                height: 1.5em;
+                line-height: 1.5em;
+            }
+        }
+        .o_dcs_cart_badge {
+            font-size: .6875rem;
+            min-width: 1.25rem;
+        }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+        *, *::before, *::after {
+            transition-duration: .01ms !important;
+            animation-duration: .01ms !important;
+            animation-iteration-count: 1 !important;
+            scroll-behavior: auto !important;
+        }
+    }
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright 2026 DevsCodeSpace. License OPL-1. -->
+<odoo>
+
+    <!--
+        Header actions shared by every DCS Commerce Pro header: account, extra
+        actions (filled by the wishlist / comparison bridges) and cart.
+        Parameters: _item_class, _link_class.
+    -->
+    <template id="header_actions" name="DCS Header Actions">
+        <!-- Account -->
+        <t t-call="portal.placeholder_user_sign_in">
+            <t t-set="_item_class" t-valuef="o_dcs_action o_dcs_action_signin"/>
+            <t t-set="_link_class" t-valuef="nav-link o_dcs_action_link"/>
+        </t>
+        <t t-call="portal.user_dropdown">
+            <t t-set="_icon" t-value="True"/>
+            <t t-set="_no_caret" t-value="True"/>
+            <t t-set="_item_class" t-valuef="o_dcs_action dropdown"/>
+            <t t-set="_link_class" t-valuef="nav-link o_dcs_action_link"/>
+            <t t-set="_icon_class" t-valuef="fa-stack"/>
+            <t t-set="_dropdown_menu_class" t-valuef="dropdown-menu-end"/>
+        </t>
+        <!-- Wishlist, comparison (bridge modules) -->
+        <t t-call="dcs_ecommerce_pro.placeholder_header_actions_extra"/>
+        <!-- Cart -->
+        <t t-call="website_sale.header_cart_link">
+            <t t-set="_icon" t-value="True"/>
+            <t t-set="_text" t-value="True"/>
+            <t t-set="_item_class" t-valuef="o_dcs_action o_dcs_action_cart"/>
+            <t t-set="_link_class" t-valuef="nav-link o_dcs_action_link position-relative"/>
+            <t t-set="_icon_wrap_class" t-valuef="position-relative d-inline-flex"/>
+            <t t-set="_text_class" t-valuef="o_dcs_action_label"/>
+            <t t-set="_badge_class" t-valuef="position-absolute top-0 start-100 translate-middle rounded-pill o_dcs_cart_badge"/>
+        </t>
+    </template>
+
+    <!-- Extension point: bridge modules add wishlist / compare links here. -->
+    <template id="placeholder_header_actions_extra" name="DCS Header Actions Extra"/>
+
+</odoo>
